@@ -1,0 +1,21 @@
+server:
+  port: 8080
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: 600
+        min-idle: 0
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    hikari:
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      maximum-pool-size: 9
+    driver-class-name: com.mysql.jdbc.Driver

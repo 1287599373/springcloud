@@ -1,0 +1,19 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: resource-server
+
+security:
+  oauth2:
+    client:
+      client-id: user-client
+      client-secret: 123456
+      user-authorization-uri: http://localhost:8080/oauth/authorize
+      access-token-uri: http://localhost:8080/oauth/token
+    authorization:
+      check-token-access: http://localhost:8080/oauth/check_token
+    resource:
+      id: user-client
+      user-info-uri: user-info
+
