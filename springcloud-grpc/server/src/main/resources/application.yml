@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: grpc-server
+grpc:
+  server:
+    port: 6000   #grpc监听的端口
+#    security:
+#      enabled: true
+#      certificate-chain: classpath:certificates/server.pem
+#      private-key: classpath:certificates/server.key

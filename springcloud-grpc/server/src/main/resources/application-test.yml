@@ -1,0 +1,8 @@
+server:
+  port: 8082
+spring:
+  application:
+    name: grpc-server
+grpc:
+  server:
+    port: 6001   #grpc监听的端口

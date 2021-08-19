@@ -1,0 +1,79 @@
+syntax = "proto3";
+package com.zt.sms.mixcloud.provider.grpc.proto;
+option java_outer_classname = "SMS";
+/********自定义短信发送*********/
+message CustomizeSendSMSRequest{
+  string mobile = 1;
+  string content = 2;
+  string time = 3;
+  uint32 ext = 4;
+  string extend = 5;
+}
+
+message CustomizeSendSMSResponse{
+  uint32 code = 1;
+  string msg = 2;
+  string msgId = 3;
+  uint32 contNum = 4;
+}
+/*****************/
+
+/********回复的抓取接口*********/
+message PullReplyRequest{
+  uint32 count = 1;
+}
+message PullReplyResponse{
+  int32 code = 1;
+  string msg = 2;
+  repeated Record records = 3;
+
+  message Record{
+    string msg_id = 1;
+    string mobile = 2;
+    string content = 3;
+    string ext = 4;
+    string createTime = 5;
+    string username = 6;
+  }
+}
+/*****************/
+
+/********下行回执的抓取接口*********/
+message PullReportRequest{
+  uint32 count = 1;
+}
+
+message PullReportResponse{
+  int32 code = 1;
+  string msg = 2;
+  repeated Record records = 3;
+
+  message Record{
+    string code = 1;
+    string msg = 2;
+    string mobile = 3;
+    string msg_id = 4;
+    string report_time = 5;
+    string extend = 6;
+    int32 pkTotal = 7;
+    int32 pkNumber = 8;
+    string username = 9;
+  }
+}
+
+/*****************/
+
+service SMSService {
+  //自定义短信发送
+  rpc sendSms(CustomizeSendSMSRequest) returns (CustomizeSendSMSResponse){};
+
+  //回复的抓取接口
+  rpc pullReply(PullReplyRequest) returns (PullReplyResponse){};
+
+  //回执的抓取接口(多)
+  rpc pullReport(PullReportRequest) returns (PullReportResponse){};
+
+  //回执的抓取接口(单)
+  rpc pullReportMerge(PullReportRequest) returns (PullReportResponse){};
+
+}

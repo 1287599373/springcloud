@@ -1,0 +1,20 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: grpc-client
+
+grpc:
+  client:
+    grpc-server:
+      address: static://47.103.164.140:9090
+      enableKeepAlive: false
+      keepAliveWithoutCalls: true
+      negotiationType: PLAINTEXT
+
+
+zt:
+  username: test
+  password: 123456   #请替换对应的测试账号，这里用户密码无效
+
+

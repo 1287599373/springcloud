@@ -1,0 +1,25 @@
+syntax = "proto3";
+package com.zt.sms.mixcloud.proto;
+option java_outer_classname = "SMS";
+
+message DiySMSRequest{
+  string username = 1;
+  string password = 2;
+  uint64 tKey = 3;
+  string mobile = 4;
+  string content = 5;
+  string time = 6;
+  uint32 ext = 7;
+  string extend = 8;
+}
+
+message DiySMSResponse{
+  uint32 code = 1;
+  string msg = 2;
+  string msgId = 3;
+  uint32 contNum = 4;
+}
+
+service SMSServer {
+  rpc sendSms(DiySMSRequest) returns (DiySMSResponse){};
+}
